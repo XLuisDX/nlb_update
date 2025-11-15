@@ -8,15 +8,10 @@
   justify-content: center;
   overflow: hidden;
   color: #ffffff;
-
   background:
     radial-gradient(circle at top left, rgba(122, 185, 42, 0.22), transparent 55%),
     radial-gradient(circle at bottom right, rgba(122, 185, 42, 0.16), transparent 55%),
     #191927;
-}
-.hero-inner {
-  position: relative;
-  z-index: 2;
 }
 
 .home::after {
@@ -24,22 +19,21 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 52%;            
+  width: 52%;
   height: 100%;
   background-image: url("../assets/hero-bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
-
   opacity: 0.85;
   z-index: 1;
   pointer-events: none;
 }
 
-
 .hero-inner {
+  position: relative;
+  z-index: 2;
   max-width: 1180px;
   width: 100%;
   display: flex;
@@ -100,12 +94,14 @@
   font-weight: 600;
   color: #7ab92a;
 }
+
 .hero-actions {
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
+
 .hero-btn-primary {
   padding: 0.9rem 2.4rem;
   font-size: 0.95rem;
@@ -120,11 +116,13 @@
   transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out,
     background 0.25s ease-in-out;
 }
+
 .hero-btn-primary:hover {
   transform: translateY(-1px);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
   background: linear-gradient(120deg, #8fd63a, #d5ff8a);
 }
+
 .hero-btn-secondary {
   padding: 0.9rem 2.2rem;
   font-size: 0.95rem;
@@ -173,22 +171,16 @@
 
 .hero-card {
   width: 100%;
+  max-width: 440px;
   border-radius: 1.8rem;
-  background: rgba(20, 20, 32, 0.55); /* transparencia elegante */
+  background: rgba(20, 20, 32, 0.55);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 26px 60px rgba(0, 0, 0, 0.7);
   padding: 2rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-}
-
-
-.form-row-2col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
 }
 
 .hero-card-header {
@@ -232,6 +224,13 @@
   gap: 0.9rem;
 }
 
+.form-row-2col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -256,7 +255,9 @@
   outline: none;
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
     background 0.2s ease-in-out;
-  resize: vertical;
+  resize: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 .form-group input::placeholder,
@@ -306,8 +307,6 @@
   color: rgba(255, 255, 255, 0.65);
 }
 
-/* Responsive */
-
 @media screen and (max-width: 1024px) {
   .hero-inner {
     flex-direction: column;
@@ -352,12 +351,33 @@
 
   .hero-card {
     padding: 1.4rem 1.5rem;
+    max-width: 100%;
   }
+
   .form-row {
     flex-direction: column;
   }
 
   .form-row-2col {
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .hero-title span {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
   }
 }

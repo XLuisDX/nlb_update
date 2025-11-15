@@ -186,3 +186,13 @@
     display: initial;
   }
 }
+@media screen and (max-width: 900px) {
+  .brand-title {
+    font-size: 0.85rem;
+  }
+
+  .header {
+    padding: 0.9rem 1.2rem;
+  }
+}
+

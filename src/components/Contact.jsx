@@ -32,7 +32,7 @@ const Contact = () => {
             transition={{ duration: 0.7 }}
           >
             <p className="contact-kicker">Contact</p>
-            <h2>Let&apos;s talk about your trees</h2>
+            <h2 className="contact-title">Let&apos;s talk about your trees</h2>
             <p className="contact-subtitle">
               Tell us what you need help with and we will get back to you as
               soon as possible to schedule a visit and give you a free estimate.

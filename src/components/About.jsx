@@ -1,5 +1,5 @@
 import "./AboutStyles.css";
-import img1 from "../assets/logo.png";
+import img1 from "../assets/nlb.jpg";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 

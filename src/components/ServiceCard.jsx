@@ -1,34 +1,26 @@
-/* eslint-disable react/prop-types */
-import "./ServicesStyles.css";
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import PropTypes from "prop-types";
+import "./ServiceCardStyles.css";
 
-const WorkCard = (props) => {
+const ServiceCard = ({ title, text, img }) => {
   return (
-    <>
-      <Helmet>
-        <title>NLB Tree Service and Gardening LLC</title>
-        <meta name="description" content="NLB tree services" />
-        <link rel="canonical" href="nlbtreeserviceandgardering.com" />
-      </Helmet>
-      <motion.div
-        className="service-card"
-        initial={{ x: -250 }}
-        whileInView={{ x: 0 }}
-        transition={{ type: "spring", stiffness: 120 }}
-        viewport={{ once: true }}
-      >
-        <img src={props.img} alt="img" />
-        <h2 className="service-title">{props.title}</h2>
-        <div className="pro-details">
-          <p>{props.text}</p>
+    <div className="service-card">
+      {img && (
+        <div className="service-card-image">
+          <img src={img} alt={title} />
         </div>
-        <a className="pro-btn" href="#contact">
-          <button className="btn">Book Now</button>
-        </a>
-      </motion.div>
-    </>
+      )}
+      <div className="service-card-body">
+        <h3>{title}</h3>
+        <p>{text}</p>
+      </div>
+    </div>
   );
 };
 
-export default WorkCard;
+ServiceCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  img: PropTypes.string,
+};
+
+export default ServiceCard;

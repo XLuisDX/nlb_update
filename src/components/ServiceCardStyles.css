@@ -1,0 +1,85 @@
+.service-card {
+  background: rgba(20, 20, 32, 0.6);
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+
+  height: 100%;
+  min-height: 380px;
+
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  border-color: rgba(122, 185, 42, 0.7);
+}
+
+.service-card-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-card-image img {
+  transform: scale(1.08);
+}
+
+.service-card-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.service-card-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: #ffffff;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.service-card-body p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;     /* ← Ajusta aquí cuántas líneas quieres */
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 768px) {
+  .service-card {
+    min-height: 360px;
+  }
+
+  .service-card-image {
+    height: 150px;
+  }
+
+  .service-card-body {
+    padding: 1.2rem 1.3rem 1.4rem;
+  }
+}

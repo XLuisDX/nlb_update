@@ -1,100 +1,156 @@
 import "./HomeImgStyles.css";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 
-import IntroImg1 from "../assets/img1.jpg";
-import IntroImg2 from "../assets/IntroImg.jpg";
-import IntroImg3 from "../assets/pruning.jpg";
-
-const images = [IntroImg1, IntroImg2, IntroImg3];
-
 const HomeImg = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <motion.section
       className="home"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="background">
-        <motion.img
-          key={currentImage}
-          src={images[currentImage]}
-          alt="Background"
-          className="intro-img"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        />
-        <div className="overlay"></div>
-      </div>
-
-      <motion.div
-        className="content"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <motion.h1
-          className="title"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          Transform Your Outdoors
-        </motion.h1>
-
-        <motion.p
-          className="subtitle"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          We are the experts in tree and garden care. We offer a range of services from pruning to landscaping to make your outdoor space beautiful and healthy
-        </motion.p>
-        <motion.p
-          className="subtitle"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          Call: (803) 292-1649
-        </motion.p>
-
+      <div className="hero-inner">
         <motion.div
-          className="btn-group"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          className="hero-left"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          <a href="#about" className="btn btn-gradient">
-            Learn More
-          </a>
-          <a href="#contact" className="btn btn-outline">
-            Contact Us
-          </a>
+          <p className="hero-pill">Tree care · Removal · Storm response</p>
+
+          <motion.h1
+            className="hero-title"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+          >
+            Safe, clean tree service
+            <span>for your home</span>
+          </motion.h1>
+
+          <motion.p
+            className="hero-subtitle"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            Family-owned tree service helping homeowners in Augusta remove
+            hazardous trees, shape overgrown canopies and restore their yards
+            after storms.
+          </motion.p>
+
+          <motion.p
+            className="hero-phone"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+          >
+            Call or text
+            <span>(803) 292-1649</span>
+          </motion.p>
+
+          <motion.div
+            className="hero-actions"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+          >
+            <a href="#contact" className="hero-btn-primary">
+              Get a free estimate
+            </a>
+            <a href="#services" className="hero-btn-secondary">
+              View services
+            </a>
+          </motion.div>
+
+          <motion.div
+            className="hero-tags"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9 }}
+          >
+            <span className="hero-tag">Family-owned</span>
+            <span className="hero-tag">Fully insured</span>
+            <span className="hero-tag">Serving Augusta area</span>
+          </motion.div>
         </motion.div>
 
-        <motion.img
-          src={logo}
-          alt="Logo"
-          className="logo"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-          whileHover={{ scale: 1.1, rotate: 5 }}
-        />
-      </motion.div>
+        <motion.div
+          className="hero-right"
+          initial={{ x: 30, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.4 }}
+        >
+          <div className="hero-card">
+            <div className="hero-card-header">
+              <img
+                src={logo}
+                alt="NLB Tree Service logo"
+                className="hero-logo"
+              />
+              <div className="hero-card-title">
+                <span>Request a free quote</span>
+                <p>Tell us about your property and tree needs.</p>
+              </div>
+            </div>
+
+            <div className="hero-card-body">
+              <form className="hero-form">
+                <div className="form-row-2col">
+                  <div className="form-group">
+                    <label htmlFor="name">Full name</label>
+                    <input id="name" type="text" placeholder="John Doe" />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone</label>
+                    <input id="phone" type="tel" placeholder="(803) 000-0000" />
+                  </div>
+                </div>
+
+                <div className="form-row-2col">
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="you@email.com"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="address">Property address</label>
+                    <input
+                      id="address"
+                      type="text"
+                      placeholder="Street, city, ZIP code"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="details">What do you need help with?</label>
+                  <textarea
+                    id="details"
+                    rows="3"
+                    placeholder="Tree removal, pruning, storm damage, etc."
+                  />
+                </div>
+
+                <button type="submit" className="hero-form-btn">
+                  Apply for a quote
+                </button>
+
+                <p className="hero-form-note">
+                  We will reach out as soon as possible to confirm details and
+                  schedule a visit.
+                </p>
+              </form>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </motion.section>
   );
 };

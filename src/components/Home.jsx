@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import HomeImg from "./HomeImg";
 import { Helmet } from "react-helmet-async";
 
@@ -8,12 +7,12 @@ const Home = () => {
       <Helmet>
         <title>NLB Tree Service and Gardening LLC</title>
         <meta name="description" content="NLB tree service home page" />
-        <link rel="canonical" href="nlbtreeserviceandgardering.com" />
+        <link rel="canonical" href="https://nlbtreeserviceandgardering.com" />
       </Helmet>
-      <div id="home">
-        <Navbar />
+
+      <section id="home">
         <HomeImg />
-      </div>
+      </section>
     </>
   );
 };

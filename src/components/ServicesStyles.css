@@ -1,0 +1,116 @@
+/* Contenedor principal */
+.work-container {
+  width: 100%;
+  padding: 4rem 2rem;
+  background: linear-gradient(45deg, #ffb400, #000000, #000000);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 10s infinite alternate;
+  text-align: center;
+}
+
+/* Título de la sección */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #f8d90f, #ffb400);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Contenedor de las tarjetas de servicio */
+.service-container {
+  max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+    padding-bottom: 1rem;
+}
+
+/* Tarjeta de servicio */
+.service-card {
+  background: rgba(26, 25, 25, 0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+.service-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Imagen dentro de la tarjeta */
+.service-card img {
+  width: 100%;
+  border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+    .service-card:hover img {
+      transform: scale(1.05);
+    }
+  
+    /* Título de cada servicio */
+.service-title {
+  color: #f8d90f;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+/* Descripción del servicio */
+.pro-details p {
+  color: white;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+  
+    /* Botón */
+  .pro-btn {
+    margin-top: 1.5rem;
+  }
+  
+    .pro-btn .btn {
+      padding: 0.6rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      background: linear-gradient(90deg, #ffb400, #ff5733);
+      color: white;
+      transition: all 0.3s ease-in-out;
+  }
+  
+    .pro-btn .btn:hover {
+      transform: translateY(-3px);
+    }
+  
+    /* Responsive */
+@media screen and (max-width: 900px) {
+  .service-container {
+    grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    }
+    
+    @media screen and (max-width: 600px) {
+      .service-container {
+            grid-template-columns: 1fr;
+  .section-title {
+      font-size: 1.8rem;
+    }
+        }
+        }

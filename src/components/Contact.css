@@ -1,0 +1,118 @@
+/* 📌 Main Contact Section */
+.contact-container {
+    width: 100%;
+    background: linear-gradient(45deg, #ffb400, #000000, #000000);
+    background-size: 400% 400%;
+    animation: backgroundAnimation 10s infinite alternate;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+/* 🎨 Background Animation */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* 📝 Contact Title */
+.contact-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #f8d90f, #ffb400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* 🔹 Contact Information */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* 📞 Contact Icons */
+.contact-icon {
+    color: #f8d90f;
+    font-size: 1.5rem;
+}
+
+/* 📨 Contact Form Wrapper */
+.contact-form-wrapper {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+/* 🔘 Contact Form Button */
+.contact-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ffb400, #ff5733);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🚀 Hover Effect */
+.contact-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, #ff5733, #ffb400);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* 📱 Responsive Design */
+@media screen and (max-width: 768px) {
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .contact-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-title {
+        font-size: 1.8rem;
+    }
+
+    .contact-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}

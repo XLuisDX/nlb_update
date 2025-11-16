@@ -35,9 +35,9 @@ const HomeImg = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Family-owned tree service helping homeowners in Augusta remove
-            hazardous trees, shape overgrown canopies and restore their yards
-            after storms.
+            Family-owned tree service helping homeowners in Augusta, North
+            Carolina, South Carolina and Georgia remove hazardous trees, shape
+            overgrown canopies and restore their yards after storms.
           </motion.p>
 
           <motion.p
@@ -72,7 +72,7 @@ const HomeImg = () => {
           >
             <span className="hero-tag">Family-owned</span>
             <span className="hero-tag">Fully insured</span>
-            <span className="hero-tag">Serving Augusta area</span>
+            <span className="hero-tag">Serving Augusta, NC, SC, GA</span>
           </motion.div>
         </motion.div>
 

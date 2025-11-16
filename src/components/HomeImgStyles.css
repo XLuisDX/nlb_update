@@ -8,9 +8,16 @@
   justify-content: center;
   overflow: hidden;
   color: #ffffff;
-  background:
-    radial-gradient(circle at top left, rgba(122, 185, 42, 0.22), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(122, 185, 42, 0.16), transparent 55%),
+  background: radial-gradient(
+      circle at top left,
+      rgba(122, 185, 42, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(122, 185, 42, 0.16),
+      transparent 55%
+    ),
     #191927;
 }
 
@@ -369,15 +376,35 @@
     text-align: center;
   }
 
+  .hero-pill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
   .hero-title span {
     font-size: 1.6rem;
+    text-align: center;
   }
 
   .hero-subtitle {
     font-size: 0.95rem;
+    text-align: center;
   }
 
   .hero-actions {
     gap: 0.75rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-phone {
+    text-align: center;
+  }
+
+  .hero-tags {
+    justify-content: center;
+    align-items: center;
   }
 }

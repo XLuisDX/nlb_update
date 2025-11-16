@@ -43,8 +43,10 @@ const Navbar = () => {
       >
         <img src={logo} alt="NLB Tree Service" className="brand-logo" />
         <div className="brand-text">
-          <span className="brand-title">NLB Tree Service</span>
-          <span className="brand-subtitle">Tree Service & Gardening LLC</span>
+          <span className="brand-title">NLB Tree Service & Gardening</span>
+          <span className="brand-subtitle">
+            Tree care · Removal · Storm response
+          </span>
         </div>
       </motion.a>
 

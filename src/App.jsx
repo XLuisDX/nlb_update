@@ -6,6 +6,7 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Testimonials from "./components/Testimonials";
+import ServiceArea from "./components/ServiceArea";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main className="app-main">
         <Home />
         <About />
+        <ServiceArea />
         <Services />
         <Testimonials />
         <Contact />

@@ -73,9 +73,7 @@ const About = () => {
             <div className="about-stats">
               <div className="stat">
                 <span className="stat-number">2020</span>
-                <span className="stat-label">
-                  Serving Augusta and nearby areas
-                </span>
+                <span className="stat-label">Serving all CSRA</span>
               </div>
               <div className="stat">
                 <span className="stat-number">500+</span>

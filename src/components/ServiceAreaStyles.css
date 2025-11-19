@@ -1,12 +1,25 @@
 .service-area {
   width: 100%;
   padding: 5rem 2rem 5.5rem;
-  background: #191927;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #ffffff;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(25, 25, 39, 0.5),
+      rgba(25, 25, 39, 0.5)
+    ),
+    url("../assets/img4.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .service-area-header {
   max-width: 640px;
@@ -189,9 +202,20 @@
 @media screen and (max-width: 768px) {
   .service-area {
     padding: 4rem 1.5rem 4.5rem;
+     background:
+      linear-gradient(
+        to bottom,
+        rgba(25, 25, 39, 0.7),
+        rgba(25, 25, 39, 0.7)
+      ),
+      url("../assets/img4.jpg");
+
+    background-size: cover;
+    background-position: center;
   }
 
   .service-area-title {
     font-size: 1.9rem;
   }
 }
+

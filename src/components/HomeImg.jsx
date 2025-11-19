@@ -72,7 +72,7 @@ const HomeImg = () => {
           >
             <span className="hero-tag">Family-owned</span>
             <span className="hero-tag">Fully insured</span>
-            <span className="hero-tag">Serving Augusta, NC, SC, GA</span>
+            <span className="hero-tag">Serving all SCRA, NC, SC, GA</span>
           </motion.div>
         </motion.div>
 

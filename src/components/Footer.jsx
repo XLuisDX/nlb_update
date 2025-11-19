@@ -42,9 +42,9 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="footer-title">About the company</h3>
               <p className="footer-text">
-                Serving Augusta and surrounding areas with safe tree pruning and
-                removal services. Low-footprint cleanups and fully insured. Call
-                to schedule a free consultation and get a quote.
+                Serving all CSRA and surrounding areas with safe tree pruning
+                and removal services. Low-footprint cleanups and fully insured.
+                Call to schedule a free consultation and get a quote.
               </p>
 
               <div className="footer-social">

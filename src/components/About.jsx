@@ -47,9 +47,9 @@ const About = () => {
           >
             <h2>Family-owned tree care experts</h2>
             <p>
-              Since 2020, we have been helping homeowners in the Augusta area
-              remove hazardous trees, shape overgrown canopies and keep their
-              yards clean and safe after storms.
+              Since 2020, we have been helping homeowners in the all SCRA area
+              area remove hazardous trees, shape overgrown canopies and keep
+              their yards clean and safe after storms.
             </p>
             <p>
               Every project is handled by a small, trained team that treats your

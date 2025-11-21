@@ -11,7 +11,7 @@ const Services = () => {
         <title>NLB Tree Service and Gardening LLC | Services</title>
         <meta
           name="description"
-          content="Professional tree services in Augusta"
+          content="Professional tree services in  all SCRA area"
         />
         <link
           rel="canonical"

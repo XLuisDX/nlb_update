@@ -57,7 +57,7 @@ const Contact = () => {
               <div className="contact-detail">
                 <span className="detail-label">Service area</span>
                 <span className="detail-value">
-                  Augusta and surrounding areas
+                  all SCRA and surrounding areas
                 </span>
               </div>
             </div>

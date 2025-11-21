@@ -35,7 +35,7 @@ const HomeImg = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Family-owned tree service helping homeowners in Augusta, North
+            Family-owned tree service helping homeowners in all SCRA area, North
             Carolina, South Carolina and Georgia remove hazardous trees, shape
             overgrown canopies and restore their yards after storms.
           </motion.p>

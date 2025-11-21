@@ -6,14 +6,14 @@ const testimonials = [
   {
     name: "Zw Salgado",
     role: "Homeowner",
-    location: "Augusta, GA",
+    location: " all SCRA area, GA",
     quote:
       "These here are simply awesome people, with awesome skills. These guys are a real example of skill, professionalism and dedication at a fair price.",
   },
   {
     name: "Michelle Pappagallo",
     role: "Property owner",
-    location: "North Augusta, SC",
+    location: "North  all SCRA area, SC",
     quote:
       "Norberto and his crew have done several projects for us, and they do a great job! Very pleased with their work.",
   },
@@ -24,7 +24,7 @@ const testimonials = [
     quote:
       "Awesome costumer service. Stump removal was excellent! As soon and my budget allows going to beg them to come remove logs and junk from our back yard as well as give curb appeal to front.",
   },
-]
+];
 
 const Testimonials = () => {
   return (

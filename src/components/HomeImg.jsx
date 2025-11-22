@@ -35,9 +35,9 @@ const HomeImg = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Family-owned tree service helping homeowners in all SCRA area, North
-            Carolina, South Carolina and Georgia remove hazardous trees, shape
-            overgrown canopies and restore their yards after storms.
+            Family-owned tree service helping homeowners in all CSRA area,
+            remove hazardous trees, shape overgrown canopies and restore their
+            yards after storms.
           </motion.p>
 
           <motion.p
@@ -56,7 +56,7 @@ const HomeImg = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
           >
-            <a href="#contact" className="hero-btn-primary">
+            <a href="#estimate" className="hero-btn-primary">
               Get a free estimate
             </a>
             <a href="#services" className="hero-btn-secondary">
@@ -64,7 +64,8 @@ const HomeImg = () => {
             </a>
           </motion.div>
 
-          <motion.div
+          <motion.d
+            iv
             className="hero-tags"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,8 +73,8 @@ const HomeImg = () => {
           >
             <span className="hero-tag">Family-owned</span>
             <span className="hero-tag">Fully insured</span>
-            <span className="hero-tag">Serving all SCRA, NC, SC, GA</span>
-          </motion.div>
+            <span className="hero-tag">Serving all CSRA</span>
+          </motion.d>
         </motion.div>
 
         <motion.div
@@ -81,6 +82,7 @@ const HomeImg = () => {
           initial={{ x: 30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.4 }}
+          id="estimate"
         >
           <div className="hero-card">
             <div className="hero-card-header">

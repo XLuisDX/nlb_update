@@ -47,7 +47,7 @@ const About = () => {
           >
             <h2>Family-owned tree care experts</h2>
             <p>
-              Since 2020, we have been helping homeowners in the all SCRA area
+              Since 2020, we have been helping homeowners in the all CSRA area
               area remove hazardous trees, shape overgrown canopies and keep
               their yards clean and safe after storms.
             </p>

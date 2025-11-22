@@ -1,6 +1,6 @@
-import "./ServiceAreaStyles.css"
-import { motion } from "framer-motion"
-import { FaMapMarkerAlt } from "react-icons/fa"
+import "./ServiceAreaStyles.css";
+import { motion } from "framer-motion";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const ServiceArea = () => {
   return (
@@ -20,11 +20,10 @@ const ServiceArea = () => {
         transition={{ duration: 0.7 }}
       >
         <p className="service-area-kicker">Where we work</p>
-        <h2 className="service-area-title">Serving all CSRA, NC, SC, GA</h2>
+        <h2 className="service-area-title">Serving all CSRA</h2>
         <p className="service-area-subtitle">
-          We are based near all SCRA area and typically serve homeowners and
-          property owners across Georgia, South Carolina and North Carolina
-          within a practical driving distance.
+          We are based near all CSRA area and typically serve homeowners and
+          property owners within a practical driving distance.
         </p>
       </motion.div>
 
@@ -39,24 +38,12 @@ const ServiceArea = () => {
           <div className="service-area-badges">
             <div className="area-badge">
               <FaMapMarkerAlt />
-              <span> all SCRA area</span>
-            </div>
-            <div className="area-badge">
-              <FaMapMarkerAlt />
-              <span>South Carolina</span>
-            </div>
-            <div className="area-badge">
-              <FaMapMarkerAlt />
-              <span>North Carolina</span>
-            </div>
-            <div className="area-badge">
-              <FaMapMarkerAlt />
-              <span>Georgia</span>
+              <span> all CSRA area</span>
             </div>
           </div>
 
           <p className="service-area-body">
-            Most of our work is around the greater all SCRA area and nearby
+            Most of our work is around the greater all CSRA area and nearby
             communities in Georgia and South Carolina. For larger projects, we
             can travel farther across the tri-state region.
           </p>
@@ -92,7 +79,7 @@ const ServiceArea = () => {
                 title="Service area map"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13184283.886465328!2d-81.973!3d34.200!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f9fba8bc91d97b%3A0x2b735e5f991690dd!2s all SCRA area%2C%20GA!5e0!3m2!1sen!2sus!4v1731637500000"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13184283.886465328!2d-81.973!3d34.200!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f9fba8bc91d97b%3A0x2b735e5f991690dd!2s all CSRA area%2C%20GA!5e0!3m2!1sen!2sus!4v1731637500000"
                 allowFullScreen
               ></iframe>
             </div>
@@ -101,6 +88,6 @@ const ServiceArea = () => {
       </div>
     </motion.section>
   );
-}
+};
 
-export default ServiceArea
+export default ServiceArea;

@@ -79,7 +79,7 @@ const ServiceArea = () => {
                 title="Service area map"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13184283.886465328!2d-81.973!3d34.200!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f9fba8bc91d97b%3A0x2b735e5f991690dd!2s all CSRA area%2C%20GA!5e0!3m2!1sen!2sus!4v1731637500000"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d85822.501524639!2d-81.993!3d33.4735!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f9fba8bc91d97b%3A0x2b735e5f991690dd!2sAugusta%2C%20GA!5e0!3m2!1sen!2sus!4v1700000000000"
                 allowFullScreen
               ></iframe>
             </div>

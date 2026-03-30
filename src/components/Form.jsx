@@ -27,6 +27,18 @@ const Form = () => {
       return errors;
     },
     onSubmit: (values, { resetForm }) => {
+      // Google Ads conversion tracking
+      if (typeof gtag === "function") {
+        gtag("event", "conversion", {
+          send_to: "AW-17468615116/Yl_QCK--2vwbEMzT14lB",
+          value: 1.0,
+          currency: "USD",
+        });
+      }
+      // Facebook Pixel Lead event
+      if (typeof fbq === "function") {
+        fbq("track", "Lead");
+      }
       window.location.href = `mailto:norbertolainez87@icloud.com?subject=Quick_contact&body= It comes from: ${values.name}. Message: ${values.message}. Email: (${values.email})`;
       resetForm();
     },

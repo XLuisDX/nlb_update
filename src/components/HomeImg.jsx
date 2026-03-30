@@ -1,8 +1,61 @@
+import { useState } from "react";
 import "./HomeImgStyles.css";
 import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 
 const HomeImg = () => {
+  const [status, setStatus] = useState("idle");
+  const [formData, setFormData] = useState({
+    full_name: "",
+    phone_number: "",
+    email_address: "",
+    property_address: "",
+    project_details: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    setStatus("sending");
+
+    try {
+      await fetch("https://hooks.zapier.com/hooks/catch/26259692/unzw8tb/", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(formData),
+      });
+
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "d37f9344-7319-49e4-8f8e-9556fc667f94",
+          to: "norbertolainez2024@gmail.com",
+          subject: "New quote request - NLB Tree Service",
+          name: formData.full_name,
+          email: formData.email_address,
+          phone: formData.phone_number,
+          address: formData.property_address,
+          message: formData.project_details,
+        }),
+      });
+
+      setStatus("success");
+      setFormData({
+        full_name: "",
+        phone_number: "",
+        email_address: "",
+        property_address: "",
+        project_details: "",
+      });
+    } catch (error) {
+      setStatus("error");
+    }
+  };
+
   return (
     <motion.section
       className="home"
@@ -100,12 +153,28 @@ const HomeImg = () => {
                 <div className="form-row-2col">
                   <div className="form-group">
                     <label htmlFor="name">Full name</label>
-                    <input id="name" type="text" placeholder="John Doe" />
+                    <input
+                      id="name"
+                      name="full_name"
+                      type="text"
+                      placeholder="John Doe"
+                      value={formData.full_name}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="phone">Phone</label>
-                    <input id="phone" type="tel" placeholder="(803) 000-0000" />
+                    <input
+                      id="phone"
+                      name="phone_number"
+                      type="tel"
+                      placeholder="(803) 000-0000"
+                      value={formData.phone_number}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -114,8 +183,12 @@ const HomeImg = () => {
                     <label htmlFor="email">Email</label>
                     <input
                       id="email"
+                      name="email_address"
                       type="email"
                       placeholder="you@email.com"
+                      value={formData.email_address}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
 
@@ -123,8 +196,11 @@ const HomeImg = () => {
                     <label htmlFor="address">Property address</label>
                     <input
                       id="address"
+                      name="property_address"
                       type="text"
                       placeholder="Street, city, ZIP code"
+                      value={formData.property_address}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -133,14 +209,45 @@ const HomeImg = () => {
                   <label htmlFor="details">What do you need help with?</label>
                   <textarea
                     id="details"
+                    name="project_details"
                     rows="3"
                     placeholder="Tree removal, pruning, storm damage, etc."
+                    value={formData.project_details}
+                    onChange={handleChange}
                   />
                 </div>
 
-                <button type="submit" className="hero-form-btn">
-                  Apply for a quote
+                <button
+                  type="button"
+                  className="hero-form-btn"
+                  disabled={status === "sending"}
+                  onClick={handleSubmit}
+                >
+                  {status === "sending" ? "Sending..." : "Apply for a quote"}
                 </button>
+
+                {status === "success" && (
+                  <p
+                    style={{
+                      color: "#28a745",
+                      marginTop: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Message sent! We will reach out to you shortly.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p
+                    style={{
+                      color: "#dc3545",
+                      marginTop: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Something went wrong. Please try again.
+                  </p>
+                )}
 
                 <p className="hero-form-note">
                   We will reach out as soon as possible to confirm details and

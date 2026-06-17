@@ -3,7 +3,7 @@ import img2 from "../assets/pruning.jpg";
 import img3 from "../assets/cleaning.jpg";
 import img4 from "../assets/clearing.jpg";
 import img5 from "../assets/cut.jpg";
-import img6 from "../assets/musing.jpg";
+// import img6 from "../assets/musing.jpg";
 import img7 from "../assets/stump2.jpeg";
 
 const ServiceCardData = [

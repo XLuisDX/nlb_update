@@ -1,54 +1,60 @@
-/* global gtag, fbq */
+import { useState } from "react";
 import "./HomeImgStyles.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import logo from "../assets/logo.png";
 
 const HomeImg = () => {
-  const [formStatus, setFormStatus] = useState("idle"); // idle, sending, sent, error
+  const [status, setStatus] = useState("idle");
+  const [formData, setFormData] = useState({
+    full_name: "",
+    phone_number: "",
+    email_address: "",
+    property_address: "",
+    project_details: "",
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    setFormStatus("sending");
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    // Google Ads conversion tracking
-    if (typeof gtag === "function") {
-      gtag("event", "conversion", {
-        send_to: "AW-17468615116/Yl_QCK--2vwbEMzT14lB",
-        value: 1.0,
-        currency: "USD",
+  const handleSubmit = async () => {
+    setStatus("sending");
+
+    try {
+      await fetch("https://hooks.zapier.com/hooks/catch/26259692/unzw8tb/", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(formData),
       });
+
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "d37f9344-7319-49e4-8f8e-9556fc667f94",
+          to: "norbertolainez2024@gmail.com",
+          subject: "New quote request - NLB Tree Service",
+          name: formData.full_name,
+          email: formData.email_address,
+          phone: formData.phone_number,
+          address: formData.property_address,
+          message: formData.project_details,
+        }),
+      });
+
+      setStatus("success");
+      setFormData({
+        full_name: "",
+        phone_number: "",
+        email_address: "",
+        property_address: "",
+        project_details: "",
+      });
+    } catch (error) {
+      setStatus("error");
     }
-    // Facebook Pixel Lead event
-    if (typeof fbq === "function") {
-      fbq("track", "Lead");
-    }
-
-    const datos = {
-      full_name: form.querySelector('[name="full_name"]').value,
-      phone_number: form.querySelector('[name="phone_number"]').value,
-      email_address: form.querySelector('[name="email_address"]').value,
-      property_address: form.querySelector('[name="property_address"]').value,
-      project_details: form.querySelector('[name="project_details"]').value,
-    };
-
-    // Fire-and-forget webhook calls (using form-urlencoded to avoid CORS preflight)
-    fetch("/config.json")
-      .then((r) => r.json())
-      .then((config) => {
-        config.webhooks.forEach((url) => {
-          fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(datos).toString(),
-          }).catch(() => {});
-        });
-      })
-      .catch(() => {});
-
-    setFormStatus("sent");
-    form.reset();
   };
 
   return (
@@ -149,13 +155,29 @@ const HomeImg = () => {
               <form className="hero-form" onSubmit={handleSubmit}>
                 <div className="form-row-2col">
                   <div className="form-group">
-                    <label htmlFor="full_name">Full name</label>
-                    <input id="full_name" name="full_name" type="text" placeholder="John Doe" required />
+                    <label htmlFor="name">Full name</label>
+                    <input
+                      id="name"
+                      name="full_name"
+                      type="text"
+                      placeholder="John Doe"
+                      value={formData.full_name}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="phone_number">Phone</label>
-                    <input id="phone_number" name="phone_number" type="tel" placeholder="(803) 000-0000" required />
+                    <label htmlFor="phone">Phone</label>
+                    <input
+                      id="phone"
+                      name="phone_number"
+                      type="tel"
+                      placeholder="(803) 000-0000"
+                      value={formData.phone_number}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -163,10 +185,12 @@ const HomeImg = () => {
                   <div className="form-group">
                     <label htmlFor="email_address">Email</label>
                     <input
-                      id="email_address"
+                      id="email"
                       name="email_address"
                       type="email"
                       placeholder="you@email.com"
+                      value={formData.email_address}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -174,11 +198,12 @@ const HomeImg = () => {
                   <div className="form-group">
                     <label htmlFor="property_address">Property address</label>
                     <input
-                      id="property_address"
+                      id="address"
                       name="property_address"
                       type="text"
                       placeholder="Street, city, ZIP code"
-                      required
+                      value={formData.property_address}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -186,21 +211,46 @@ const HomeImg = () => {
                 <div className="form-group">
                   <label htmlFor="project_details">What do you need help with?</label>
                   <textarea
-                    id="project_details"
+                    id="details"
                     name="project_details"
                     rows="3"
                     placeholder="Tree removal, pruning, storm damage, etc."
-                    required
+                    value={formData.project_details}
+                    onChange={handleChange}
                   />
                 </div>
 
                 <button
-                  type="submit"
+                  type="button"
                   className="hero-form-btn"
-                  disabled={formStatus === "sending"}
+                  disabled={status === "sending"}
+                  onClick={handleSubmit}
                 >
-                  {formStatus === "sending" ? "Sending..." : formStatus === "sent" ? "Sent!" : "Apply for a quote"}
+                  {status === "sending" ? "Sending..." : "Apply for a quote"}
                 </button>
+
+                {status === "success" && (
+                  <p
+                    style={{
+                      color: "#28a745",
+                      marginTop: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Message sent! We will reach out to you shortly.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p
+                    style={{
+                      color: "#dc3545",
+                      marginTop: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Something went wrong. Please try again.
+                  </p>
+                )}
 
                 <p className="hero-form-note">
                   {formStatus === "sent"

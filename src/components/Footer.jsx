@@ -74,6 +74,9 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+
+            {/* ✅ Corregido: /privacy-policy sin guión */}
+            <a href="/privacy-policy">Privacy Policy</a>
           </div>
 
           <div className="footer-bottom">

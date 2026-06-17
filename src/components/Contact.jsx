@@ -48,10 +48,10 @@ const Contact = () => {
               <div className="contact-detail">
                 <span className="detail-label">Email</span>
                 <a
-                  href="mailto:norbertolainez87@icloud.com"
+                  href="mailto:norbertolainez2024@gmail.com"
                   className="detail-value"
                 >
-                  norbertolainez87@icloud.com
+                  norbertolainez2024@gmail.com
                 </a>
               </div>
               <div className="contact-detail">

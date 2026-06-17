@@ -1,8 +1,56 @@
+/* global gtag, fbq */
 import "./HomeImgStyles.css";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import logo from "../assets/logo.png";
 
 const HomeImg = () => {
+  const [formStatus, setFormStatus] = useState("idle"); // idle, sending, sent, error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    setFormStatus("sending");
+
+    // Google Ads conversion tracking
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-17468615116/Yl_QCK--2vwbEMzT14lB",
+        value: 1.0,
+        currency: "USD",
+      });
+    }
+    // Facebook Pixel Lead event
+    if (typeof fbq === "function") {
+      fbq("track", "Lead");
+    }
+
+    const datos = {
+      full_name: form.querySelector('[name="full_name"]').value,
+      phone_number: form.querySelector('[name="phone_number"]').value,
+      email_address: form.querySelector('[name="email_address"]').value,
+      property_address: form.querySelector('[name="property_address"]').value,
+      project_details: form.querySelector('[name="project_details"]').value,
+    };
+
+    // Fire-and-forget webhook calls (using form-urlencoded to avoid CORS preflight)
+    fetch("/config.json")
+      .then((r) => r.json())
+      .then((config) => {
+        config.webhooks.forEach((url) => {
+          fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(datos).toString(),
+          }).catch(() => {});
+        });
+      })
+      .catch(() => {});
+
+    setFormStatus("sent");
+    form.reset();
+  };
+
   return (
     <motion.section
       className="home"
@@ -98,55 +146,66 @@ const HomeImg = () => {
             </div>
 
             <div className="hero-card-body">
-              <form className="hero-form">
+              <form className="hero-form" onSubmit={handleSubmit}>
                 <div className="form-row-2col">
                   <div className="form-group">
-                    <label htmlFor="name">Full name</label>
-                    <input id="name" type="text" placeholder="John Doe" />
+                    <label htmlFor="full_name">Full name</label>
+                    <input id="full_name" name="full_name" type="text" placeholder="John Doe" required />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
-                    <input id="phone" type="tel" placeholder="(803) 000-0000" />
+                    <label htmlFor="phone_number">Phone</label>
+                    <input id="phone_number" name="phone_number" type="tel" placeholder="(803) 000-0000" required />
                   </div>
                 </div>
 
                 <div className="form-row-2col">
                   <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email_address">Email</label>
                     <input
-                      id="email"
+                      id="email_address"
+                      name="email_address"
                       type="email"
                       placeholder="you@email.com"
+                      required
                     />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="address">Property address</label>
+                    <label htmlFor="property_address">Property address</label>
                     <input
-                      id="address"
+                      id="property_address"
+                      name="property_address"
                       type="text"
                       placeholder="Street, city, ZIP code"
+                      required
                     />
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="details">What do you need help with?</label>
+                  <label htmlFor="project_details">What do you need help with?</label>
                   <textarea
-                    id="details"
+                    id="project_details"
+                    name="project_details"
                     rows="3"
                     placeholder="Tree removal, pruning, storm damage, etc."
+                    required
                   />
                 </div>
 
-                <button type="submit" className="hero-form-btn">
-                  Apply for a quote
+                <button
+                  type="submit"
+                  className="hero-form-btn"
+                  disabled={formStatus === "sending"}
+                >
+                  {formStatus === "sending" ? "Sending..." : formStatus === "sent" ? "Sent!" : "Apply for a quote"}
                 </button>
 
                 <p className="hero-form-note">
-                  We will reach out as soon as possible to confirm details and
-                  schedule a visit.
+                  {formStatus === "sent"
+                    ? "Thank you! We will reach out soon."
+                    : "We will reach out as soon as possible to confirm details and schedule a visit."}
                 </p>
               </form>
             </div>

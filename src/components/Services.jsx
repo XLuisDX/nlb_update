@@ -51,7 +51,7 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <ServiceCard title={val.title} text={val.text} img={val.img} />
+              <ServiceCard title={val.title} text={val.text} img={val.img} gallery={val.gallery} />
             </motion.div>
           ))}
         </motion.div>

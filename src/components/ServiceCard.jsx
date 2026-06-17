@@ -5,12 +5,14 @@ import "./ServiceCardStyles.css";
 const ServiceCard = ({ title, text, img, gallery = [] }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   const hasGallery = gallery && gallery.length > 0;
 
   const openModal = () => {
     if (hasGallery) {
       setCurrentImageIndex(0);
+      setIsImageLoading(true);
       setIsModalOpen(true);
       document.body.style.overflow = "hidden";
     }
@@ -22,15 +24,20 @@ const ServiceCard = ({ title, text, img, gallery = [] }) => {
   };
 
   const nextImage = useCallback(() => {
+    setIsImageLoading(true);
     setCurrentImageIndex((prev) => (prev + 1) % gallery.length);
   }, [gallery.length]);
 
   const prevImage = useCallback(() => {
+    setIsImageLoading(true);
     setCurrentImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
   }, [gallery.length]);
 
   const goToImage = (index) => {
-    setCurrentImageIndex(index);
+    if (index !== currentImageIndex) {
+      setIsImageLoading(true);
+      setCurrentImageIndex(index);
+    }
   };
 
   useEffect(() => {
@@ -55,25 +62,21 @@ const ServiceCard = ({ title, text, img, gallery = [] }) => {
           >
             <img src={img} alt={title} />
             {hasGallery && (
-              <div className="gallery-overlay">
-                <span className="gallery-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                  </svg>
-                  <span>{gallery.length} photos</span>
-                </span>
+              <div className="gallery-badge">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span>{gallery.length}</span>
               </div>
             )}
           </div>
@@ -83,6 +86,19 @@ const ServiceCard = ({ title, text, img, gallery = [] }) => {
           <p>{text}</p>
           {hasGallery && (
             <button className="view-gallery-btn" onClick={openModal}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
               View Gallery
             </button>
           )}
@@ -91,82 +107,75 @@ const ServiceCard = ({ title, text, img, gallery = [] }) => {
 
       {isModalOpen && (
         <div className="gallery-modal-overlay" onClick={closeModal}>
-          <div className="gallery-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={closeModal}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
+          <div className="gallery-modal-fullscreen" onClick={(e) => e.stopPropagation()}>
 
-            <h3 className="modal-title">{title}</h3>
+            {/* Header */}
+            <div className="modal-header">
+              <div className="modal-header-left">
+                <span className="modal-badge">{title}</span>
+                <span className="modal-counter">
+                  {currentImageIndex + 1} of {gallery.length}
+                </span>
+              </div>
+              <button className="modal-close-btn" onClick={closeModal}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
 
-            <div className="carousel-container">
-              <button className="carousel-btn prev" onClick={prevImage}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+            {/* Main Image Area */}
+            <div className="modal-main-content">
+              <button className="nav-btn nav-prev" onClick={prevImage}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
 
-              <div className="carousel-image-wrapper">
+              <div className="main-image-container">
+                {isImageLoading && (
+                  <div className="image-loader">
+                    <div className="loader-spinner"></div>
+                  </div>
+                )}
                 <img
                   src={gallery[currentImageIndex]}
                   alt={`${title} - Image ${currentImageIndex + 1}`}
-                  className="carousel-image"
+                  className={`main-image ${isImageLoading ? 'loading' : 'loaded'}`}
+                  onLoad={() => setIsImageLoading(false)}
                 />
               </div>
 
-              <button className="carousel-btn next" onClick={nextImage}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+              <button className="nav-btn nav-next" onClick={nextImage}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>
             </div>
 
-            <div className="carousel-counter">
-              {currentImageIndex + 1} / {gallery.length}
+            {/* Thumbnail Strip */}
+            <div className="thumbnail-strip">
+              <div className="thumbnail-track">
+                {gallery.map((image, index) => (
+                  <button
+                    key={index}
+                    className={`thumb ${index === currentImageIndex ? "active" : ""}`}
+                    onClick={() => goToImage(index)}
+                  >
+                    <img src={image} alt={`Thumbnail ${index + 1}`} />
+                    <div className="thumb-overlay"></div>
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <div className="carousel-thumbnails">
-              {gallery.map((image, index) => (
-                <button
-                  key={index}
-                  className={`thumbnail ${index === currentImageIndex ? "active" : ""}`}
-                  onClick={() => goToImage(index)}
-                >
-                  <img src={image} alt={`Thumbnail ${index + 1}`} />
-                </button>
-              ))}
+            {/* Progress Bar */}
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: `${((currentImageIndex + 1) / gallery.length) * 100}%` }}
+              ></div>
             </div>
           </div>
         </div>

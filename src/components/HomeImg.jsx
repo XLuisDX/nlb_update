@@ -117,8 +117,7 @@ const HomeImg = () => {
             </a>
           </motion.div>
 
-          <motion.d
-            iv
+          <motion.div
             className="hero-tags"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,7 +126,7 @@ const HomeImg = () => {
             <span className="hero-tag">Family-owned</span>
             <span className="hero-tag">Fully insured</span>
             <span className="hero-tag">Serving all CSRA</span>
-          </motion.d>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -227,7 +226,9 @@ const HomeImg = () => {
                   disabled={status === "sending"}
                   onClick={handleSubmit}
                 >
-                  {status === "sending" ? "Sending..." : "Apply for a quote"}
+                  {status === "sending"
+                    ? "Sending..."
+                    : "Apply for a free quote"}
                 </button>
 
                 {status === "success" && (

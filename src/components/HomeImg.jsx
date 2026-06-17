@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./HomeImgStyles.css";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import logo from "../assets/logo.png";
 
 const HomeImg = () => {
@@ -209,7 +208,9 @@ const HomeImg = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="project_details">What do you need help with?</label>
+                  <label htmlFor="project_details">
+                    What do you need help with?
+                  </label>
                   <textarea
                     id="details"
                     name="project_details"
@@ -251,12 +252,6 @@ const HomeImg = () => {
                     Something went wrong. Please try again.
                   </p>
                 )}
-
-                <p className="hero-form-note">
-                  {formStatus === "sent"
-                    ? "Thank you! We will reach out soon."
-                    : "We will reach out as soon as possible to confirm details and schedule a visit."}
-                </p>
               </form>
             </div>
           </div>

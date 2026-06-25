@@ -66,7 +66,15 @@ const ServiceCardData = [
     title: "Landscaping",
     text: "Enhance your property's beauty with custom landscaping. From planting to design to maintenance, we create outdoor spaces that look stunning and stay healthy.",
     img: img1,
-    gallery: [],
+    gallery: [
+      "/Landscaping/1.webp",
+      "/Landscaping/2.webp",
+      "/Landscaping/3.webp",
+      "/Landscaping/4.webp",
+      "/Landscaping/5.webp",
+      "/Landscaping/6.webp",
+      "/Landscaping/7.webp",
+    ],
   },
   // {
   //   title: "Mulching",

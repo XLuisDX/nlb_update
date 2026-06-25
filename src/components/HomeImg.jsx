@@ -144,7 +144,7 @@ const HomeImg = () => {
                 className="hero-logo"
               />
               <div className="hero-card-title">
-                <span>Request a free quote</span>
+                <span>Request a FREE QUOTE</span>
                 <p>Tell us about your property and tree needs.</p>
               </div>
             </div>

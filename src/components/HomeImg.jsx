@@ -21,7 +21,7 @@ const HomeImg = () => {
     setStatus("sending");
 
     try {
-      await fetch("https://hooks.zapier.com/hooks/catch/26259692/unzw8tb/", {
+      await fetch("https://hooks.zapier.com/hooks/catch/26259692/ujkv9pi/", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
